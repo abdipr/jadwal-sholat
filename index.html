@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Jadwal Sholat</title>
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito Sans&display=swap">
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/themes/light.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/themes/dark.css"
+        />
+        <script
+            type="module"
+            src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/shoelace-autoloader.js"
+        ></script>
+        <script type="module">
+            await Promise.allSettled([customElements.whenDefined("sl-card")]);
+            document.body.classList.add("ready");
+        </script>
+    </head>
+    <body onload="document.documentElement.classList.add('sl-theme-light')">
+        <div id="header" class="header">
+            <h2 class="header-items">Jadwal Sholat</h2>
+            <span
+                id="themeIcon"
+                class="material-symbols-outlined header-items"
+                onclick="toggleTheme()"
+                >light_mode</span
+            >
+        </div>
+        <div class="head">
+            <div class="column">
+                <div class="info">
+                    <span class="material-symbols-outlined">calendar_month</span
+                    ><span id="hijriDate"></span>
+                </div>
+                <div class="info">
+                    <span class="material-symbols-outlined">calendar_today</span
+                    ><span id="date"></span>
+                </div>
+                <div class="info">
+                    <span class="material-symbols-outlined">access_time</span
+                    ><span id="current-time"></span>
+                </div>
+            </div>
+            <div id="countdown"></div>
+        </div>
+        <div class="container" id="timingsContainer"></div>
+        <script src="script.js"></script>
+    </body>
+</html>
