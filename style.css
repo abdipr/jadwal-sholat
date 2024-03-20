@@ -62,13 +62,17 @@ body {
     margin-left: auto;
 }
 .head {
-    display: flex;
-    justify-content: space-between;
     margin: 10px;
     font-size: 15px;
     width: calc(100vw - 20px);
+    display: block;
+    justify-content: space-between;
+}
+.countdown {
+    margin: 10px;
 }
 .column {
+    margin: 10px;
     margin-bottom: 2.5px;
     display: flex;
     justify-content: space-between;
