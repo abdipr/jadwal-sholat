@@ -104,56 +104,19 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             const timingsContainer =
                 document.getElementById("timingsContainer");
-                
-            let nextTimingIndex = 0; // Index untuk card waktu berikutnya
-            let nextTimingMinutes = Infinity; // Menyimpan waktu sholat berikutnya dalam menit
             timingsArray.forEach(timing => {
                 const translatedName = translatedNames[timing[0]] || timing[0];
                 const card = createCard(translatedName, timing[1]);
                 timingsContainer.appendChild(card);
             });
-            const currentTimeValue = getTimeValue([null, getCurrentTime()]);
-        const timingValue = getTimeValue(timing);
-        if (timingValue > currentTimeValue && timingValue < nextTimingMinutes) {
-            nextTimingIndex = index; // Simpan index card waktu berikutnya
-            nextTimingMinutes = timingValue;
-        }
-    });
-
-    // Tambahkan kelas "next-timing" ke card waktu berikutnya
-    timingsContainer.children[nextTimingIndex].classList.add("next-timing");
-
-    // Hitung countdown menuju waktu sholat berikutnya
-    const countdownElement = document.createElement("div");
-    countdownElement.id = "countdown";
-    document.querySelector(".head").appendChild(countdownElement);
-
-    // Panggil fungsi updateCountdown dengan mode default
-    updateCountdown(nextTimingMinutes, true);
-    setInterval(() => {
-        // Panggil fungsi updateCountdown secara berkala
-        updateCountdown(nextTimingMinutes, true);
-    }, 1000);
+            setInterval(function () {
+                countdownToNextPrayer(data.data.timings);
+            }, 500);
+            setInterval(function () {
+                updateProgressBar(data.data.timings);
+            }, 1000);
+        });
 });
-
-function updateCountdown(nextTimingMinutes, useVerboseMode) {
-    const now = new Date();
-    const currentMinutes = now.getHours() * 60 + now.getMinutes();
-    const remainingMinutes = nextTimingMinutes - currentMinutes;
-
-    // Jika menggunakan mode verbose
-    if (useVerboseMode) {
-        const hours = Math.floor(remainingMinutes / 60);
-        const minutes = Math.floor(remainingMinutes % 60);
-        const seconds = Math.floor((remainingMinutes % 1) * 60);
-
-        const countdownElement = document.getElementById("countdown");
-        countdownElement.textContent = `${hours} jam ${minutes} menit ${seconds} detik lagi menuju waktu sholat berikutnya`;
-    } else { // Jika menggunakan mode non-verbose
-        const countdownElement = document.getElementById("countdown");
-        countdownElement.textContent = `${remainingMinutes} menit lagi menuju waktu sholat berikutnya`;
-    }
-}
 
 function createCard(title, time) {
     const card = document.createElement("sl-card");
@@ -186,4 +149,58 @@ function updateClock() {
     ).textContent = `${hours}:${minutes}:${seconds}`;
 }
 
-setInterval(updateClock, 1000);
+function countdownToNextPrayer(prayerTimings) {
+    const now = new Date();
+    const currentTimeInMinutes = now.getHours() * 60 + now.getMinutes();
+
+    let nextPrayerTime;
+    let nextPrayerName;
+
+    // Loop through prayer timings to find the next prayer
+    for (const [prayerName, prayerTime] of Object.entries(prayerTimings)) {
+        const prayerTimeInMinutes = convertToMinutes(prayerTime);
+        if (prayerTimeInMinutes > currentTimeInMinutes) {
+            nextPrayerTime = prayerTimeInMinutes;
+            nextPrayerName = prayerName;
+            break;
+        }
+    }
+
+    if (nextPrayerTime && nextPrayerName) {
+        const timeDifference = nextPrayerTime - currentTimeInMinutes;
+        const hoursRemaining = Math.floor(timeDifference / 60);
+        const minutesRemaining = timeDifference % 60;
+        const secondsRemaining = (60 - now.getSeconds()) % 60;
+
+        const countdownText = `${hoursRemaining} jam ${minutesRemaining} menit ${secondsRemaining} detik menuju ${nextPrayerName}`;
+        document.getElementById("countdown").textContent = countdownText;
+    } else {
+        document.getElementById("countdown").textContent =
+            "Tidak ada sholat berikutnya hari ini.";
+    }
+}
+function updateProgressBar(prayerTimings) {
+    const now = new Date();
+    const currentTimeInMinutes = now.getHours() * 60 + now.getMinutes();
+
+    let nextPrayerTime;
+
+    // Loop through prayer timings to find the next prayer
+    for (const [, prayerTime] of Object.entries(prayerTimings)) {
+        const prayerTimeInMinutes = convertToMinutes(prayerTime);
+        if (prayerTimeInMinutes > currentTimeInMinutes) {
+            nextPrayerTime = prayerTimeInMinutes;
+            break;
+        }
+    }
+
+    if (nextPrayerTime) {
+        const timeDifference = nextPrayerTime - currentTimeInMinutes;
+        const progressBarValue = (timeDifference / 60) * 100; // Convert to percentage
+        document.getElementById("progressBar").value = 100 - progressBarValue;
+    } else {
+        document.getElementById("progressBar").value = 100; // Sholat berikutnya belum tersedia, jadi progress bar diatur ke 100%
+    }
+}
+
+setInterval(updateClock, 500);
