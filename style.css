@@ -29,6 +29,15 @@ body {
     align-items: center;
     min-height: 100vh;
 }
+a {
+    text-decoration: none;
+    color: var(--sl-color-indigo-700);
+}
+.footer {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    text-align: center;
+}
 .container {
     display: flex;
     flex-direction: column;
