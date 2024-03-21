@@ -62,11 +62,9 @@ a {
     align-items: center;
     margin: 20px;
 }
-
 .header-items h2 {
     margin-right: auto;
 }
-
 .header-items span {
     margin-left: auto;
 }
@@ -126,7 +124,6 @@ a {
     flex-grow: 1;
     text-align: left;
 }
-
 .card p {
     margin: 0;
     flex-grow: 2;
