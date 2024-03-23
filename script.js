@@ -173,8 +173,8 @@ function countdownToNextPrayer(prayerTimings) {
     const secondsRemaining = (60 - now.getSeconds()) % 60;
     const translatedNextPrayerName =
       translatedNames[nextPrayerName] || nextPrayerName;
-    const countdownText = `${hoursRemaining} jam ${minutesRemaining} menit ${secondsRemaining} detik menuju ${translatedNextPrayerName}`;
-    document.getElementById("countdown").textContent = countdownText;
+    const countdownText = `${hoursRemaining} jam ${minutesRemaining} menit ${secondsRemaining} detik menuju <b>${translatedNextPrayerName}</b>`;
+    document.getElementById("countdown").innerHTML = countdownText;
   } else {
     document.getElementById("countdown").textContent =
       "Tidak ada sholat berikutnya hari ini.";
