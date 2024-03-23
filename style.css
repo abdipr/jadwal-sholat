@@ -31,7 +31,7 @@ body {
 }
 a {
     text-decoration: none;
-    color: var(--sl-color-teal-900);
+    color: var(--sl-color-teal-600);
 }
 .footer {
     margin-top: 20px;
@@ -81,8 +81,8 @@ a {
 .progress {
     --height: 10px;
     padding: 10px;
-    --indicator-color: var(--sl-color-teal-900);
-    --track-color: #1e293b;
+    --indicator-color: var(--sl-color-teal-600);
+    --track-color: #d9d9dc;
 }
 .column {
     margin: 10px;
@@ -133,6 +133,13 @@ a {
     flex-grow: 2;
     text-align: right;
 }
+.sl-theme-dark a {
+    color: var(--sl-color-teal-800);
+}
+.sl-theme-dark sl-progress-bar {
+    --indicator-color: var(--sl-color-teal-800);
+    --track-color: #1e293b;
+}
 .sl-theme-dark sl-card::part(base) {
     background: #1f2937;
     border: solid 1px #334155;
@@ -147,5 +154,4 @@ a {
 .dark-mode-header {
     background-color: #1f2937;
     color: #fff;
-    }
-    
+}
