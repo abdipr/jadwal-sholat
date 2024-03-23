@@ -3,12 +3,45 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Jadwal Sholat</title>
+        <title>Jadwal Sholat - Abdi PR</title>
+        <meta name="title" content="Jadwal Sholat - Abdi PR" />
+        <meta
+            name="description"
+            content="Website simpel untuk mengetahui jadwal sholat di suatu tempat."
+        />
+        <link rel="apple-touch-icon" href="assets/js-logo.jpg" />
+        <link rel="icon" type="image/png" href="assets/js-logo.jpg" />
+
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://abdi.es/" />
+        <meta property="og:title" content="Jadwal Sholat - Abdi PR" />
+        <meta
+            property="og:description"
+            content="Website simpel untuk mengetahui jadwal sholat di suatu tempat."
+        />
+        <meta property="og:image" content="assets/js-banner.jpg" />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://abdi.es/" />
+        <meta property="twitter:title" content="Jadwal Sholat - Abdi PR" />
+        <meta
+            property="twitter:description"
+            content="Website simpel untuk mengetahui jadwal sholat di suatu tempat."
+        />
+        <meta property="twitter:image" content="assets/js-banner.jpg" />
         <link rel="stylesheet" href="style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito Sans&display=swap">
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Nunito Sans&display=swap"
+        />
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.14.0/cdn/themes/light.css"
@@ -33,7 +66,7 @@
                 id="themeIcon"
                 class="material-symbols-outlined header-items"
                 onclick="toggleTheme()"
-                style="cursor: pointer;"
+                style="cursor: pointer"
                 >light_mode</span
             >
         </div>
@@ -53,12 +86,18 @@
                 </div>
             </div>
             <div class="infotext">
-            <span class="countdown" id="countdown"></span>
-              <sl-progress-bar id="progressBar" max="100" class="progress"></sl-progress-bar>
+                <span class="countdown" id="countdown"></span>
+                <sl-progress-bar
+                    id="progressBar"
+                    max="100"
+                    class="progress"
+                ></sl-progress-bar>
             </div>
         </div>
         <div class="container" id="timingsContainer"></div>
-      <div class="footer">Made with ❤️ by <a href="https://github.com/abdipr">Abdi</a></div>
+        <div class="footer">
+            Made with ❤️ by <a href="https://github.com/abdipr">Abdi</a>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>
