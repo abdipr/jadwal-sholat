@@ -21,7 +21,7 @@ body {
 }
 body {
     font-family: "Nunito Sans", sans-serif;
-    background-color: #ebebef;
+    background-color: #f0f0f0;
     margin: 0;
     padding: 0;
     display: flex;
@@ -31,7 +31,7 @@ body {
 }
 a {
     text-decoration: none;
-    color: var(--sl-color-indigo-700);
+    color: var(--sl-color-teal-900);
 }
 .footer {
     margin-top: 20px;
@@ -52,7 +52,7 @@ a {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    background: #f5f5ff;
+    background: #fff;
     width: 100%;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
 }
@@ -81,8 +81,8 @@ a {
 .progress {
     --height: 10px;
     padding: 10px;
-    --indicator-color: var(--sl-color-indigo-700);
-    --track-color: #c6c6c7;
+    --indicator-color: var(--sl-color-teal-900);
+    --track-color: #1e293b;
 }
 .column {
     margin: 10px;
@@ -133,21 +133,19 @@ a {
     flex-grow: 2;
     text-align: right;
 }
-.sl-theme-dark sl-progress-bar {
-    --track-color: #1e293b;
-}
 .sl-theme-dark sl-card::part(base) {
     background: #1f2937;
     border: solid 1px #334155;
 }
 .dark-mode-body {
     background-color: #111827;
-    color: #f5f5ff;
+    color: #fff;
 }
 .dark-mode-container {
-    color: #f5f5ff;
+    color: #fff;
 }
 .dark-mode-header {
     background-color: #1f2937;
-    color: #f5f5ff;
-}
+    color: #fff;
+    }
+    
